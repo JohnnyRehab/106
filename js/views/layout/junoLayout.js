@@ -76,10 +76,18 @@ define([
                 
                 // tuna.Overdrive has no tone control of its own, so a
                 // plain lowpass filter follows it to serve the same role
-                // as Distortion's built-in tone stage.
+                // as Distortion's built-in tone stage. Both drv and
+                // drvTone are wrapped in a dry/wet crossfade (drvDry/
+                // drvWet/drvMix) so that toggling OVER DRIVE off silences
+                // the tone filter too, instead of leaving it permanently
+                // inline on the master bus.
                 this.drvTone = App.context.createBiquadFilter();
                 this.drvTone.type = 'lowpass';
                 this.applyOverdriveTone(this.synth.get('drv-tone'));
+                
+                this.drvDry = App.context.createGain();
+                this.drvWet = App.context.createGain();
+                this.drvMix = App.context.createGain();
                 
                 this.dly = new tuna.Delay({
                     delayTime: util.getFaderCurve(this.synth.get('dly-time')) * 980 + 20,
@@ -100,12 +108,18 @@ define([
                 this.masterGain.gain.value = 0.5;
                 
                 this.cho.connect(this.dis.input);
+                this.dis.connect(this.drvDry);
                 this.dis.connect(this.drv.input);
                 this.drv.connect(this.drvTone);
-                this.drvTone.connect(this.rng.input);
+                this.drvTone.connect(this.drvWet);
+                this.drvDry.connect(this.drvMix);
+                this.drvWet.connect(this.drvMix);
+                this.drvMix.connect(this.rng.input);
                 this.rng.connect(this.dly.input);
                 this.dly.connect(this.masterGain);
                 this.masterGain.connect(App.context.destination);
+                
+                this.applyOverdriveBypass(!this.synth.get('drv-active'));
 
                 this.lfo = new LFO({
                     lfoRate: this.synth.get('lfo-rate'),
@@ -311,12 +325,23 @@ define([
             
             updateOverdrive: function(attr, value) {
                 if(attr === 'active') {
-                    this.drv.bypass = !value;
+                    this.applyOverdriveBypass(!value);
                 } else if(attr === 'drive') {
                     this.drv.drive = value;
                 } else if(attr === 'tone') {
                     this.applyOverdriveTone(value);
                 }
+            },
+            
+            // Crossfades drvDry/drvWet so that, when OVER DRIVE is off,
+            // the signal skips both tuna.Overdrive *and* the drvTone
+            // filter entirely, rather than relying on tuna's own bypass
+            // (which only covers the Overdrive node itself).
+            applyOverdriveBypass: function(bypass) {
+                var now = App.context.currentTime;
+                this.drv.bypass = bypass;
+                this.drvWet.gain.setTargetAtTime(bypass ? 0 : 1, now, 0.01);
+                this.drvDry.gain.setTargetAtTime(bypass ? 1 : 0, now, 0.01);
             },
             
             applyOverdriveTone: function(value) {

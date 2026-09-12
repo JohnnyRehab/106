@@ -10,10 +10,17 @@ define([
         // curve whose steepness scales directly with drive, plus a
         // post-stage lowpass filter for tone shaping (tuna's Overdrive has
         // no tone control of its own).
+        //
+        // Bypass is implemented as a true dry/wet crossfade around the
+        // *entire* wet chain (waveshaper + tone filter), not just a null
+        // waveshaper curve — otherwise the tone filter would keep coloring
+        // the signal even while "off".
         function Distortion(options) {
             var input = App.context.createGain();
             var waveshaper = App.context.createWaveShaper();
             var toneFilter = App.context.createBiquadFilter();
+            var dryGain = App.context.createGain();
+            var wetGain = App.context.createGain();
             var output = App.context.createGain();
 
             var drive = options.drive || 0;
@@ -21,7 +28,10 @@ define([
 
             input.connect(waveshaper);
             waveshaper.connect(toneFilter);
-            toneFilter.connect(output);
+            toneFilter.connect(wetGain);
+            input.connect(dryGain);
+            wetGain.connect(output);
+            dryGain.connect(output);
 
             waveshaper.oversample = '4x';
             toneFilter.type = 'lowpass';
@@ -55,7 +65,7 @@ define([
 
             function applyDrive(value) {
                 drive = value;
-                waveshaper.curve = bypass ? null : buildCurve(drive);
+                waveshaper.curve = buildCurve(drive);
             }
 
             function applyTone(value) {
@@ -67,9 +77,16 @@ define([
                 );
             }
 
+            // Full dry/wet crossfade: when bypassed, the wet chain
+            // (waveshaper + tone filter) is silenced entirely and the dry
+            // signal passes straight through, so neither the clipping nor
+            // the tone filter can color the sound while "off".
             function applyBypass(value) {
+                var now = App.context.currentTime;
                 bypass = !!value;
-                waveshaper.curve = bypass ? null : buildCurve(drive);
+
+                wetGain.gain.setTargetAtTime(bypass ? 0 : 1, now, 0.01);
+                dryGain.gain.setTargetAtTime(bypass ? 1 : 0, now, 0.01);
             }
 
             applyDrive(drive);

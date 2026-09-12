@@ -23,7 +23,6 @@ define([
             var bypass = !!options.bypass;
 
             carrier.type = 'sine';
-            carrier.frequency.value = 200;
             ringGain.gain.value = 0;
 
             carrier.connect(ringGain.gain);
