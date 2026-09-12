@@ -1,0 +1,132 @@
+.fader-container {
+    height: 75%;
+    width: 95%;
+    margin: auto;
+    display: inline-block;
+}
+
+.fader-container--slim {
+    @extend .fader-container;
+    width: 55%;
+}
+
+.fader__scale {
+    height: 100%;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-self: center;
+}
+
+.fader__scale--light {
+    @extend .fader__scale;
+    background: repeating-linear-gradient(
+        0deg,
+        white,
+        white 1px,
+        transparent 1px,
+        transparent 20px
+    );
+}
+
+.fader__scale--heavy {
+    @extend .fader__scale;
+    position: absolute;
+    left: 2.5%;
+    background: repeating-linear-gradient(
+        0deg,
+        white,
+        white 3px,
+        transparent 3px,
+        transparent 100px
+    );
+}
+
+.fader__scale--hpf {
+    @extend .fader__scale;
+    background: repeating-linear-gradient(
+        0deg,
+        white,
+        white 2px,
+        transparent 3px,
+        transparent 50px
+    );
+    margin-top: -20px;
+    width: 75%;
+    > .fader__slot {
+        margin-top: 50px;
+        > .fader__knob {
+            transition: top 0.1s;
+        }
+    }
+}
+
+.fader {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.fader__slot {
+    width: 10px;
+    background-color: black;
+    height: 89%;
+    margin: 10% auto 0 auto;
+    border-radius: $border-radius;
+    align-self: center;
+    position: relative;
+}
+
+.env {
+    .fader__slot {
+        margin-top: 10px;
+    }
+}
+
+.fader__knob {
+    position: absolute;
+    top: 95%;
+    left: -17px;
+    background-color: $fader-knob-clr;
+    border-radius: 5px;
+    width: 44px;
+    height: 22px;
+    display: flex;
+    align-self: flex-start;
+    box-shadow: 1px 1px 2px black;
+    &:hover {
+        box-shadow: 1px 1px 2px black, 0 0 7px white;
+    }
+    &.dragging {
+        border: 1px dashed $led-on-clr;
+        box-shadow: 0 0 7px white;
+    }
+}
+
+// Lights up the RES fader knob once the filter crosses the self-oscillation
+// threshold (see js/synth/vcf.js updateSelfResonance).
+.fader__knob--self-oscillating {
+    background-color: $led-on-clr;
+    box-shadow: 0 0 8px $led-on-clr, 0 0 2px white;
+    animation: self-oscillate-pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes self-oscillate-pulse {
+    from { box-shadow: 0 0 4px $led-on-clr; }
+    to   { box-shadow: 0 0 12px $led-on-clr, 0 0 4px white; }
+}
+
+// Ready-made highlight for a future dco-portamento fader knob.
+.fader__knob--glide-active {
+    border: 1px solid $highlight-clr;
+    box-shadow: 1px 1px 2px black, 0 0 5px $highlight-clr;
+}
+
+hr {
+    width: 100%;
+    background-color: $fader-knob-line-clr;
+    border-radius: 2px;
+    font-weight: 200;
+    height: 2px;
+}

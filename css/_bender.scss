@@ -1,0 +1,35 @@
+// Ready-made styling for an on-screen pitch-bend lever, matching the
+// existing .fader__knob / .switch__knob look and feel. Wire this up to a
+// template once a bender control is added; no JS in this repo references
+// these classes yet.
+
+.bender-lever {
+    position: relative;
+    width: 18px;
+    height: 90px;
+    margin: 0 auto;
+    background-color: black;
+    border-radius: 9px;
+}
+
+.bender-lever__knob {
+    position: absolute;
+    left: -8px;
+    width: 34px;
+    height: 18px;
+    background-color: $fader-knob-clr;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px black;
+    transition: top 0.15s ease-out;
+    &:hover {
+        box-shadow: 1px 1px 2px black, 0 0 7px $highlight-clr;
+    }
+    &.dragging {
+        box-shadow: 0 0 7px $highlight-clr;
+        transition: none;
+    }
+}
+
+.bender-lever--centered .bender-lever__knob {
+    box-shadow: 0 0 6px $led-on-clr;
+}

@@ -1,0 +1,29 @@
+<div class="module__header--left-corner">
+    <h4>SEQ</h4>
+</div>
+
+<div class="module__back sequencer__back">
+    <div class="sequencer__transport">
+        <a href="javascript:;" class="button--orange js-seq-play">PLAY</a>
+        <a href="javascript:;" class="button--orange js-seq-stop pressed">STOP</a>
+
+        <label class="sequencer__field">
+            BPM
+            <input type="number" class="js-seq-bpm" min="40" max="300" value="{{bpm}}">
+        </label>
+        <label class="sequencer__field">
+            SWING
+            <input type="number" class="js-seq-swing" min="0" max="75" value="{{swing}}">
+        </label>
+    </div>
+
+    <div class="sequencer__banks">
+        {{#each banks}}
+            <a href="javascript:;" class="sequencer__bank-btn js-seq-bank" data-bank="{{index}}">{{label}}</a>
+        {{/each}}
+    </div>
+
+    <ul class="sequencer__steps js-seq-steps"></ul>
+
+    <div class="js-seq-step-edit sequencer__step-edit-container"></div>
+</div>

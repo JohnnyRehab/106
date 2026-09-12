@@ -1,0 +1,36 @@
+.knob-container--range {
+    @extend .button-container;
+    position: relative;
+    margin-top: 60px;
+    display: flex;
+    flex-flow: column wrap;
+    height: 110px;
+    .switch {
+        height: 80px;
+        position: relative;
+    }
+}
+
+.knob-container--vcf {
+    @extend .button-container;
+    position: relative;
+    top: 41px;
+    margin: 50px auto 0;
+    height: 38%;
+    display: inline-block;
+}
+
+.knob-container--pwm {
+    @extend .knob-container--vcf;
+    top: 0;
+    margin-top: 3px;
+    > .line {
+        margin-top: -3px;
+    }  
+}
+
+.knob-container--vca {
+    @extend .knob-container--pwm;
+    vertical-align: top;
+    top: 40px;
+}

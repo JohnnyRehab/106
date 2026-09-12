@@ -1,0 +1,25 @@
+<div class="sequencer__step-edit">
+    <span class="sequencer__step-edit-label">STEP {{stepNumber}}</span>
+
+    <div class="sequencer__step-edit-field">
+        <span class="label">NOTE</span>
+        <a href="javascript:;" class="sequencer__step-edit-btn js-note-down">-</a>
+        <span class="sequencer__step-edit-note js-note-name">{{noteName}}</span>
+        <a href="javascript:;" class="sequencer__step-edit-btn js-note-up">+</a>
+    </div>
+
+    <div class="sequencer__step-edit-field">
+        <span class="label">GATE</span>
+        <input type="range" class="js-gate" min="0.05" max="1" step="0.05" value="{{gateLength}}">
+    </div>
+
+    <div class="sequencer__step-edit-field">
+        <span class="label">ACCENT</span>
+        <a href="javascript:;" class="js-accent-toggle {{#if accent}}led--lit{{else}}led{{/if}}"></a>
+    </div>
+
+    <div class="sequencer__step-edit-field">
+        <span class="label">SLIDE</span>
+        <a href="javascript:;" class="js-slide-toggle {{#if slide}}led--lit{{else}}led{{/if}}"></a>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+/* BORDERS */
+$module-border: 1px;
+$border-radius: 8px;
+
+/* TEXT */
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,600,700);
+$header-size: 25px;
+$header-line-height: 30px;
+$label-size: 16px;
+
+$synth-width: 1024px;
+$synth-corner: 10px;
+
+body {
+    background-color: black;
+    font-family: Audiowide;
+}
+
+div, section {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    height: inherit;
+    box-sizing: border-box;
+}
+
+p, span {
+    color: white;
+    font-family: 'Raleway';
+    font-weight: 600;
+    margin: 5px;
+    cursor: default;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.juno {
+    background-color: $synth-body-clr;
+    margin: auto;
+    width: $synth-width;
+    border-radius: 8px;
+}
+
+h4 {
+    color: $module-header-text-clr;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: $header-size;
+    margin: 0;
+}
+
+.midi {
+    cursor: pointer;
+}

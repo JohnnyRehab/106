@@ -1,0 +1,58 @@
+.button {
+    height: 35px;
+    width: 55px;
+    &:first-of-type {
+        margin: 80px 3px 3px 3px;
+    }
+    margin: 10px 3px 3px 3px;
+    align-self: center;
+    border-radius: 2px;
+    opacity: .8;
+    &.pressed {
+        opacity: 1;
+    }
+    &:hover {
+        box-shadow: 0 0 7px white;
+    }
+}
+
+.button--orange {
+    @extend .button;
+    background: linear-gradient(0deg, darken($button-orange-clr, 10%), $button-orange-clr);
+}
+
+.button--yellow {
+    @extend .button;
+    background: linear-gradient(0deg, darken($button-yellow-clr, 10%), $button-yellow-clr);
+}
+
+.button--midi {
+    height: 30px;
+    padding-top: 5px;
+    width: 60px;
+    display: inline-block;
+    margin: 5px;
+    background-color: $led-off-clr;
+    color: white;
+    border-radius: 4px;
+    opacity: .7;
+    &.pressed {
+        box-shadow: 0 0 7px white;
+        opacity: 1;
+    }
+}
+
+.midi-select {
+    max-width: 200px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    height: 75%;
+}
+
+.button-container--top {
+    margin-top: 10px;
+    display: inline-block;
+}
