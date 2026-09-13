@@ -57,35 +57,45 @@
     display: inline-block;
 }
 
-// Stacks PULSE/SAW (or any pair/group of .button-container--top blocks)
-// vertically instead of side by side, to save horizontal width. The
-// 80px top margin on the first button in each row (see .button above)
-// was tuned for the old side-by-side layout, so it's reset here and a
-// single margin is applied to the group instead.
-.button-container--stack {
+// Stacks PULSE/SAW (or CHORUS's OFF/I/II) vertically instead of side by
+// side, to save horizontal width. The original .wave-label/.led/.button
+// spacing was tuned for a single row filling the module's full height on
+// its own, so stacking 2-3 of them in that same fixed-height panel means
+// each row's internal spacing has to shrink a lot, or the group
+// overflows the panel — which is exactly what the first version of this
+// rule under-compensated for.
+.button-container--stack,
+.button-container--vertical {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    gap: 4px;
+    margin-top: 0;
     
     .button-container--top {
         margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
-    .button:first-of-type {
-        margin: 10px 3px 3px 3px;
+    p {
+        margin: 0 0 2px;
     }
-}
-
-// Same idea for CHORUS's OFF/I/II buttons, which share the same
-// .button-container/.button-container--top markup.
-.button-container--vertical {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
     
+    .led {
+        margin: 3px auto;
+    }
+    
+    // The vertical divider line only made sense when OFF/I/II sat in a
+    // horizontal row; there's nothing for it to divide once stacked.
+    .line {
+        display: none;
+    }
+    
+    .button,
     .button:first-of-type {
-        margin: 10px 3px 3px 3px;
+        margin: 0 3px;
     }
 }
