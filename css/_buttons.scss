@@ -56,3 +56,36 @@
     margin-top: 10px;
     display: inline-block;
 }
+
+// Stacks PULSE/SAW (or any pair/group of .button-container--top blocks)
+// vertically instead of side by side, to save horizontal width. The
+// 80px top margin on the first button in each row (see .button above)
+// was tuned for the old side-by-side layout, so it's reset here and a
+// single margin is applied to the group instead.
+.button-container--stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    
+    .button-container--top {
+        margin-top: 0;
+    }
+    
+    .button:first-of-type {
+        margin: 10px 3px 3px 3px;
+    }
+}
+
+// Same idea for CHORUS's OFF/I/II buttons, which share the same
+// .button-container/.button-container--top markup.
+.button-container--vertical {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    
+    .button:first-of-type {
+        margin: 10px 3px 3px 3px;
+    }
+}
