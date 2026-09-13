@@ -127,8 +127,9 @@ define([
                 }
             },
             
-            // Fired via childEvents when a step button is double-clicked
-            // (see stepItemView.js's triggers hash). Selects that step for
+            // Fired via childEvents when a step is clicked (see
+            // stepItemView.js's handleClick, which toggles the step and
+            // fires 'select' in the same gesture). Selects that step for
             // editing in the panel below the grid.
             handleStepSelect: function(childView) {
                 this.selectedStepIndex = this.collection.indexOf(childView.model);
