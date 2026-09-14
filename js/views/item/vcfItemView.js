@@ -7,12 +7,13 @@ define([
     function(Backbone, Template, ModuleBaseItemView) {
         return ModuleBaseItemView.extend({
             
-            className: 'vcf control module--compact',
+            className: 'vcf control',
             
             template: Template,
             
             onShow: function() {
                 this.styleParent('five');
+                this.$el.parent().addClass('module--compact');
                 this.bindFaders();
                 this.bindSwitches();
                 this.setupSwitchPositions();

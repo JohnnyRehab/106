@@ -7,12 +7,13 @@ define([
     function(Backbone, Template, ModuleBaseItemView) {
         return ModuleBaseItemView.extend({
             
-            className: 'dco control module--compact',
+            className: 'dco control',
             
             template: Template,
             
             onShow: function() {
                 this.styleParent('seven');
+                this.$el.parent().addClass('module--compact');
                 this.bindSwitches();
                 this.bindButtons();
                 this.bindFaders();

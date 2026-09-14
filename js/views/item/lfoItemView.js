@@ -7,12 +7,13 @@ define([
     function(Backbone, Template, ModuleBaseItemView) {
         return ModuleBaseItemView.extend({
             
-            className: 'lfo control module--compact',
+            className: 'lfo control',
             
             template: Template,
             
             onShow: function() {
                 this.styleParent('two');
+                this.$el.parent().addClass('module--compact');
                 this.bindFaders();
             }
             
