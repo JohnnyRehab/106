@@ -74,6 +74,53 @@
     margin-right: 0;
 }
 
+// Phase 1 of the JU-06A-inspired compact layout (LFO/DCO/VCF only, for
+// now, as a first test before rolling this out further). The panel is
+// ~30% shorter than the standard .module; most of the internal layout
+// is already percentage-based and adapts automatically, but the
+// handful of fixed-pixel values these three panels use (fader knob
+// size, switch height, RANGE's fixed offsets, etc.) need to be scaled
+// down to match, or they'd overflow the shorter panel exactly like the
+// PULSE/SAW stacking did before this was accounted for.
+.module--compact {
+    height: 210px;
+    
+    .module__header {
+        line-height: 21px;
+    }
+    
+    .fader__knob {
+        width: 31px;
+        height: 15px;
+        left: -11px;
+    }
+    
+    .switch {
+        height: 28px;
+    }
+    
+    .switch__knob {
+        height: 11px;
+    }
+    
+    .knob-container--range {
+        margin-top: 42px;
+        height: 77px;
+        .switch {
+            height: 56px;
+        }
+    }
+    
+    .knob-container--vcf {
+        top: 29px;
+        margin-top: 35px;
+    }
+    
+    .knob-container--pwm .led {
+        margin: 25px auto;
+    }
+}
+
 .module__back {
     height: 88%;
     margin: 2px 0px;

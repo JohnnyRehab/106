@@ -750,6 +750,38 @@ h4 {
   margin-right: 0;
 }
 
+.module--compact {
+  height: 210px;
+}
+.module--compact .module__header, .module--compact .module__header--first, .module--compact .module__header--left-corner, .module--compact .module__header--last, .module--compact .module__header--right-corner {
+  line-height: 21px;
+}
+.module--compact .fader__knob {
+  width: 31px;
+  height: 15px;
+  left: -11px;
+}
+.module--compact .switch {
+  height: 28px;
+}
+.module--compact .switch__knob {
+  height: 11px;
+}
+.module--compact .knob-container--range {
+  margin-top: 42px;
+  height: 77px;
+}
+.module--compact .knob-container--range .switch {
+  height: 56px;
+}
+.module--compact .knob-container--vcf, .module--compact .knob-container--pwm, .module--compact .knob-container--vca {
+  top: 29px;
+  margin-top: 35px;
+}
+.module--compact .knob-container--pwm .led, .module--compact .knob-container--pwm .led--lit, .module--compact .knob-container--vca .led, .module--compact .knob-container--vca .led--lit {
+  margin: 25px auto;
+}
+
 .module__back {
   height: 88%;
   margin: 2px 0px;

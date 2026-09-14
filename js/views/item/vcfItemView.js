@@ -7,7 +7,7 @@ define([
     function(Backbone, Template, ModuleBaseItemView) {
         return ModuleBaseItemView.extend({
             
-            className: 'vcf control',
+            className: 'vcf control module--compact',
             
             template: Template,
             

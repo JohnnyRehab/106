@@ -7,7 +7,7 @@ define([
     function(Backbone, Template, ModuleBaseItemView) {
         return ModuleBaseItemView.extend({
             
-            className: 'dco control',
+            className: 'dco control module--compact',
             
             template: Template,
             
