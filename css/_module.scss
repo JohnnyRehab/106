@@ -87,6 +87,10 @@
     
     .module__header {
         line-height: 21px;
+        
+        h4 {
+            font-size: 18px;
+        }
     }
     
     .fader__knob {
@@ -104,16 +108,28 @@
     }
     
     .knob-container--range {
-        margin-top: 42px;
-        height: 77px;
-        .switch {
-            height: 56px;
-        }
+        margin-top: 11px;
+        height: 107px;
     }
     
+    // .knob-container--pwm and .knob-container--vca both `@extend
+    // .knob-container--vcf` in Sass, so the rule below (scaled for VCF's
+    // own switch) also gets auto-expanded to cover them — which is
+    // wrong, since each has its own, much smaller top/margin-top
+    // override in the base stylesheet. Overriding pwm/vca again here,
+    // after this rule, corrects that; this order matters.
     .knob-container--vcf {
         top: 29px;
         margin-top: 35px;
+    }
+    
+    .knob-container--pwm {
+        top: 0;
+        margin-top: 2px;
+    }
+    
+    .knob-container--vca {
+        top: 28px;
     }
     
     .knob-container--pwm .led {

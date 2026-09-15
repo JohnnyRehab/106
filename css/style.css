@@ -670,7 +670,7 @@ h4 {
   color: white;
   font-family: "Raleway", sans-serif;
   font-weight: 700;
-  font-size: 21px;
+  font-size: 25px;
   margin: 0;
 }
 
@@ -756,6 +756,9 @@ h4 {
 .module--compact .module__header, .module--compact .module__header--first, .module--compact .module__header--left-corner, .module--compact .module__header--last, .module--compact .module__header--right-corner {
   line-height: 21px;
 }
+.module--compact .module__header h4, .module--compact .module__header--first h4, .module--compact .module__header--left-corner h4, .module--compact .module__header--last h4, .module--compact .module__header--right-corner h4 {
+  font-size: 18px;
+}
 .module--compact .fader__knob {
   width: 31px;
   height: 15px;
@@ -771,12 +774,16 @@ h4 {
   margin-top: 11px;
   height: 107px;
 }
-.module--compact .knob-container--range .switch {
-  height: 56px;
-}
 .module--compact .knob-container--vcf, .module--compact .knob-container--pwm, .module--compact .knob-container--vca {
   top: 29px;
   margin-top: 35px;
+}
+.module--compact .knob-container--pwm, .module--compact .knob-container--vca {
+  top: 0;
+  margin-top: 2px;
+}
+.module--compact .knob-container--vca {
+  top: 28px;
 }
 .module--compact .knob-container--pwm .led, .module--compact .knob-container--pwm .led--lit, .module--compact .knob-container--vca .led, .module--compact .knob-container--vca .led--lit {
   margin: 25px auto;
