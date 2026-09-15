@@ -61,19 +61,21 @@ define([
             calculateFaderMovement: function(el, yPos) {
                 var position;
                 var value;
-                var slotTop = el.parent().offset().top;
-                var faderCompensation = this.clickOffset / this.slotHeight * 100;
+                var slot = el.parent();
+                var slotTop = slot.offset().top;
+                var slotHeight = slot.height();
+                var faderCompensation = this.clickOffset / slotHeight * 100;
                 
                 if((yPos - faderCompensation) < slotTop) {
                     position = -5;
-                } else if(yPos > (slotTop + this.slotHeight + faderCompensation)) {
+                } else if(yPos > (slotTop + slotHeight + faderCompensation)) {
                     position = 95;
                 } else {
-                    position = ((yPos - slotTop) / this.slotHeight * 100) - faderCompensation;
+                    position = ((yPos - slotTop) / slotHeight * 100) - faderCompensation;
                 }
 
                 el.css({
-					top: position + '%'
+                    top: position + '%'
                 });
                 
                 value = (100 - (position + 5)) / 100;
@@ -217,13 +219,12 @@ define([
             },
             
             setupFaderPosition: function(el, value) {
-                this.slotHeight = el.parent().height();
-                this.slotTop = el.parent().offset().top;
-                this.faderThickness = el.height();
+                var slotHeight = el.parent().height();
+                var faderThickness = el.height();
                 
                 var topPercentOffset = 1 - value;
-                var topPxOffset = (topPercentOffset * this.slotHeight) -
-                    (0.5 * this.faderThickness);
+                var topPxOffset = (topPercentOffset * slotHeight) -
+                    (0.5 * faderThickness);
                 
                 el.css({
                     top: topPxOffset
