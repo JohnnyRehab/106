@@ -855,6 +855,7 @@ h4 {
 .fader__scale--heavy {
   position: absolute;
   left: 2.5%;
+  pointer-events: none;
   background: repeating-linear-gradient(0deg, white, white 3px, transparent 3px, transparent 100px);
 }
 

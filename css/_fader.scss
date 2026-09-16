@@ -33,6 +33,12 @@
     @extend .fader__scale;
     position: absolute;
     left: 2.5%;
+    // Purely decorative (a ruler-line background pattern behind the
+    // actual fader track) with no interactive children of its own. If
+    // its computed size/position ever ends up larger than intended —
+    // exactly what was happening here — it must never be able to
+    // intercept clicks meant for the real .fader__knob sitting near it.
+    pointer-events: none;
     background: repeating-linear-gradient(
         0deg,
         white,
