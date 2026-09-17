@@ -5,7 +5,7 @@ define([
     //'views/item/midiItemView'
     ],
     
-    function(Backbone, Template, ModuleBaseItemView, MidiItemView) {
+    function(Backbone, Template, ModuleBaseItemView) {
         return Marionette.LayoutView.extend({
             
             className: 'control cho',
@@ -16,10 +16,11 @@ define([
                 button: '.button'
             },
             
-            
+            /*
             regions: {
-                //midiRegion: '.js-midi-region'
+                midiRegion: '.js-midi-region'
             },
+            */
 
 
             initialize: function() {
