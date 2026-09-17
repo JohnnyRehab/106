@@ -34,7 +34,7 @@ define([
                 this.triggerButton = base.triggerButton;
                 this.showContextMenu = base.showContextMenu;
                 
-                this.midiView = new MidiItemView();
+                //this.midiView = new MidiItemView();
             },
             
             onShow: function() {
