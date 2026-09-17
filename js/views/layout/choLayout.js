@@ -16,12 +16,12 @@ define([
                 button: '.button'
             },
             
-            /*
+            
             regions: {
-                midiRegion: '.js-midi-region'
+                //midiRegion: '.js-midi-region'
             },
-            */
-           
+
+
             initialize: function() {
                 var base = new ModuleBaseItemView();
                 
