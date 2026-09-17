@@ -1,8 +1,8 @@
 define([
     'backbone',
     'hbs!tmpl/layout/choLayout-tmpl',
-    'views/item/moduleBaseItemView',
-    'views/item/midiItemView'
+    'views/item/moduleBaseItemView'
+    //'views/item/midiItemView'
     ],
     
     function(Backbone, Template, ModuleBaseItemView, MidiItemView) {
@@ -16,10 +16,12 @@ define([
                 button: '.button'
             },
             
+            /*
             regions: {
                 midiRegion: '.js-midi-region'
             },
-            
+            */
+           
             initialize: function() {
                 var base = new ModuleBaseItemView();
                 
@@ -39,7 +41,7 @@ define([
                 this.styleParent('four');
                 this.bindButtons();
                 
-                this.midiRegion.show(this.midiView);
+                //this.midiRegion.show(this.midiView);
             }
             
         });
