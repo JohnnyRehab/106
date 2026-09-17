@@ -93,6 +93,20 @@ For more detailed instructions, consult the [Juno 106 owner's manual](http://www
 
 Juno-106.js was written in Javascript using the [WebAudio](http://webaudio.github.io/web-audio-api/) and [Web MIDI](http://www.w3.org/TR/webmidi/) APIs as well as [Backbone.Marionette](marionettejs.com). It also uses some effects from [tuna.js](https://github.com/Dinahmoe/tuna) by Dinahmoe.
 
+# Running locally
+
+No build step is required. Serve the project root with any static file
+server and open it in a browser, for example:
+
+```
+python3 -m http.server 8080
+```
+
+`css/style.css` is a single, plain, hand-maintained stylesheet (no SCSS,
+no Grunt). The original SCSS source files are kept for reference under
+`css/scss-archive/`, and the old Grunt-based build tooling is kept under
+`build-tools-archive/`, but neither is used by the live site.
+
 # TO-DO
 
 * Touch events
