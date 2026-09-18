@@ -94,5 +94,13 @@ require([
             App.content.show(junoLayout);
             App.header.show(headerView);
             App.menu.show(App.contextMenu);
+            
+            // Signals panels migrated to js/main-es.js (native ES
+            // modules, no Backbone/jQuery/RequireJS) that the existing
+            // app has finished starting up and it's safe to render into
+            // the region elements it created.
+            window.dispatchEvent(new CustomEvent('juno106:ready', {
+                detail: { synth: junoLayout.synth }
+            }));
         }        
 });
