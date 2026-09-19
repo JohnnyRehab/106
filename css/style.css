@@ -753,62 +753,6 @@ h4 {
 .module--compact {
   height: 210px;
 }
-
-/* Compact faders: tick marks follow panel height, not 20px/100px */
-.module--compact .fader,
-.module--compact .fader-container,
-.module--compact .fader-container--slim {
-  position: relative;
-}
-
-/* Fine ticks: 10 equal bands (9 gaps + edges). Line is the first 6% of each band. */
-.module--compact .fader__scale--light {
-  background-image: repeating-linear-gradient(
-    180deg,
-    #fff 0,
-    #fff 6%,
-    transparent 6%,
-    transparent 100%
-  );
-  background-size: 100% 10%;
-  background-repeat: repeat-y;
-  background-position: 0 0;
-}
-
-/*
-  Coarse ticks: 2 equal bands → lines at top, middle, and (almost) bottom.
-  Keep this layer the same size as the light scale, not a detached absolute box.
-*/
-.module--compact .fader__scale--heavy {
-  position: absolute;
-  top: 0;
-  left: 2.5%;
-  width: 95%;
-  height: 100%;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    180deg,
-    #fff 0,
-    #fff 2.5%,
-    transparent 2.5%,
-    transparent 100%
-  );
-  background-size: 100% 50%;
-  background-repeat: repeat-y;
-  background-position: 0 0;
-}
-
-/* Groove and knob travel use the same box as the ticks */
-.module--compact .fader__slot {
-  height: 100%;
-  margin: 0 auto;
-}
-
-.module--compact .fader__knob {
-  /* already sized in .module--compact; only reset the leftover 95% park position if JS uses % */
-}
-
-
 .module--compact .module__header, .module--compact .module__header--first, .module--compact .module__header--left-corner, .module--compact .module__header--last, .module--compact .module__header--right-corner {
   line-height: 21px;
 }
