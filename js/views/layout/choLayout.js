@@ -1,11 +1,10 @@
 define([
     'backbone',
     'hbs!tmpl/layout/choLayout-tmpl',
-    'views/item/moduleBaseItemView',
-    'views/item/midiItemView'
+    'views/item/moduleBaseItemView'
     ],
     
-    function(Backbone, Template, ModuleBaseItemView, MidiItemView) {
+    function(Backbone, Template, ModuleBaseItemView) {
         return Marionette.LayoutView.extend({
             
             className: 'control cho',
@@ -14,10 +13,6 @@ define([
             
             ui: {
                 button: '.button'
-            },
-            
-            regions: {
-                midiRegion: '.js-midi-region'
             },
             
             initialize: function() {
@@ -31,15 +26,15 @@ define([
                 this.setupButtonState = base.setupButtonState;
                 this.triggerButton = base.triggerButton;
                 this.showContextMenu = base.showContextMenu;
-                
-                this.midiView = new MidiItemView();
             },
             
             onShow: function() {
-                this.styleParent('four');
+                // MIDI status/input-select used to live here (see
+                // headerItemView.js, where it lives now); with it gone,
+                // CHORUS only needs enough width for its 3 stacked
+                // buttons.
+                this.styleParent('two');
                 this.bindButtons();
-                
-                this.midiRegion.show(this.midiView);
             }
             
         });

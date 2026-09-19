@@ -1447,6 +1447,11 @@ hr {
   color: #CC3300;
 }
 
+.header__midi {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .header__patch-name {
   cursor: pointer;
 }
