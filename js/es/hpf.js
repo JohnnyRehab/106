@@ -22,16 +22,18 @@ export function createHpfView(container, store) {
         '<div class="module__header--right-corner">' +
             '<h4>HPF</h4>' +
         '</div>' +
-        '<div class="module__control-group">' +
-            '<div class="label-container">' +
-                '<span class="label">FREQ</span>' +
-            '</div>' +
-            '<div class="fader-container">' +
-                '<div class="fader">' +
-                    '<div class="fader__scale--hpf">' +
-                        '<div class="fader__slot">' +
-                            '<div class="fader__knob midi" data-param="hpf-cutoff" data-value="0" data-length="4">' +
-                                '<hr>' +
+        '<div class="module__back">' +
+            '<div class="module__control-group">' +
+                '<div class="label-container">' +
+                    '<span class="label">FREQ</span>' +
+                '</div>' +
+                '<div class="fader-container">' +
+                    '<div class="fader">' +
+                        '<div class="fader__scale--hpf">' +
+                            '<div class="fader__slot">' +
+                                '<div class="fader__knob midi" data-param="hpf-cutoff" data-value="0" data-length="4">' +
+                                    '<hr>' +
+                                '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +

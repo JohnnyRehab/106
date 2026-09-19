@@ -1134,6 +1134,10 @@ hr {
   margin: 0 9.5%;
 }
 
+.dco .label--wide {
+  margin: 0 4%;
+}
+
 .label--line {
   margin: 0;
 }
