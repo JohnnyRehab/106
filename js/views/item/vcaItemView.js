@@ -12,7 +12,7 @@ define([
             template: Template,
             
             onShow: function() {
-                this.styleParent('three');
+                this.styleParent('four');
                 this.bindFaders();
                 this.bindSwitches();
                 this.setupSwitchPositions();

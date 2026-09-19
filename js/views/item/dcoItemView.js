@@ -12,7 +12,7 @@ define([
             template: Template,
             
             onShow: function() {
-                this.styleParent('seven');
+                this.styleParent('six');
                 this.$el.parent().addClass('module--compact');
                 this.bindSwitches();
                 this.bindButtons();
