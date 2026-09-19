@@ -788,6 +788,24 @@ h4 {
 .module--compact .knob-container--pwm .led, .module--compact .knob-container--pwm .led--lit, .module--compact .knob-container--vca .led, .module--compact .knob-container--vca .led--lit {
   margin: 25px auto;
 }
+.module--compact .fader__scale--light {
+  background: repeating-linear-gradient(
+        0deg,
+        white,
+        white 1px,
+        transparent 1px,
+        transparent 14px
+    );
+}
+.module--compact .fader__scale--heavy {
+  background: repeating-linear-gradient(
+        0deg,
+        white,
+        white 2px,
+        transparent 2px,
+        transparent 70px
+    );
+}
 
 .module__back {
   height: 88%;
