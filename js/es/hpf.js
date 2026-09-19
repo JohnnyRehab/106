@@ -17,7 +17,7 @@ var POSITION_MAP = {
 };
 
 export function createHpfView(container, store) {
-    container.classList.add('module', 'one');
+    container.classList.add('module', 'one', 'module--compact');
     container.innerHTML =
         '<div class="module__header--right-corner">' +
             '<h4>HPF</h4>' +

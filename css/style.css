@@ -806,6 +806,15 @@ h4 {
         transparent 70px
     );
 }
+.module--compact .fader__scale--hpf {
+  background: repeating-linear-gradient(
+        0deg,
+        white,
+        white 1px,
+        transparent 2px,
+        transparent 35px
+    );
+}
 
 .module__back {
   height: 88%;
