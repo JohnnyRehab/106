@@ -81,3 +81,16 @@ export function bindSwitch(switchEl, store) {
         dragging = false;
     });
 }
+
+// Convenience: binds a switch knob found by data-param inside
+// `container`, sets its initial position, and keeps it in sync with
+// changes made elsewhere (RESET, loading a shared patch, MIDI CC learn).
+export function bindAndSyncSwitch(container, param, store) {
+    var knob = container.querySelector('[data-param="' + param + '"]');
+
+    bindSwitch(knob, store);
+    setupSwitchPosition(knob, store.get(param));
+    store.on('change:' + param, function(value) {
+        setupSwitchPosition(knob, value);
+    });
+}

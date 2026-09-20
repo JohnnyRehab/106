@@ -47,6 +47,10 @@ export function bindAndSyncFader(container, param, store) {
         setupFaderPosition(knob, value);
     });
 }
+
+// Binds a plain continuous fader knob to drag with the mouse, updating
+// `store` on the knob's data-param as it moves.
+export function bindContinuousFader(knobEl, store) {
     var dragging = false;
     var clickOffset = 0;
 
@@ -66,3 +70,4 @@ export function bindAndSyncFader(container, param, store) {
     window.addEventListener('mouseup', function() {
         dragging = false;
     });
+}
