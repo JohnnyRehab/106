@@ -66,4 +66,3 @@ export function bindAndSyncFader(container, param, store) {
     window.addEventListener('mouseup', function() {
         dragging = false;
     });
-}
