@@ -1,10 +1,6 @@
 define([
     'backbone',
-    'views/item/lfoItemView',
     'views/item/dcoItemView',
-    'views/item/vcfItemView',
-    'views/item/vcaItemView',
-    'views/item/envItemView',
     'views/layout/choLayout',
     'views/item/disItemView',
     'views/item/drvItemView',
@@ -13,8 +9,8 @@ define([
     'hbs!tmpl/layout/moduleLayout-tmpl'
     ],
     
-    function(Backbone, LFOItemView, DCOItemView, VCFItemView, VCAItemView,
-        ENVItemView, CHOLayout, DISItemView, DRVItemView, DLYItemView, RNGItemView, Template) {
+    function(Backbone, DCOItemView,
+        CHOLayout, DISItemView, DRVItemView, DLYItemView, RNGItemView, Template) {
         return Backbone.Marionette.LayoutView.extend({
             
             className: 'module-layout-container',
@@ -22,11 +18,7 @@ define([
             template: Template,
             
             regions: {
-                lfoRegion: '.js-lfo-region',
                 dcoRegion: '.js-dco-region',
-                vcfRegion: '.js-vcf-region',
-                vcaRegion: '.js-vca-region',
-                envRegion: '.js-env-region',
                 choRegion: '.js-cho-region',
                 disRegion: '.js-dis-region',
                 drvRegion: '.js-drv-region',
@@ -44,11 +36,7 @@ define([
             
             setupModules: function() {
                 return {
-                    lfo: new LFOItemView(),
                     dco: new DCOItemView(),
-                    vcf: new VCFItemView(),
-                    vca: new VCAItemView(),
-                    env: new ENVItemView(),
                     cho: new CHOLayout(),
                     dis: new DISItemView(),
                     drv: new DRVItemView(),

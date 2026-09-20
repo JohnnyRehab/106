@@ -10,12 +10,26 @@
 // and RequireJS/Backbone/Marionette/jQuery/Handlebars can be removed.
 import { createStore } from './store.js';
 import { createHpfView } from './es/hpf.js';
+import { createLfoView } from './es/lfo.js';
+import { createVcaView } from './es/vca.js';
+import { createEnvView } from './es/env.js';
+import { createVcfView } from './es/vcf.js';
 
 window.addEventListener('juno106:ready', function(e) {
     var store = createStore(e.detail.synth);
 
-    var hpfContainer = document.querySelector('.js-hpf-region');
-    if(hpfContainer) {
-        createHpfView(hpfContainer, store);
-    }
+    var panels = [
+        { selector: '.js-hpf-region', create: createHpfView },
+        { selector: '.js-lfo-region', create: createLfoView },
+        { selector: '.js-vca-region', create: createVcaView },
+        { selector: '.js-env-region', create: createEnvView },
+        { selector: '.js-vcf-region', create: createVcfView }
+    ];
+
+    panels.forEach(function(panel) {
+        var container = document.querySelector(panel.selector);
+        if(container) {
+            panel.create(container, store);
+        }
+    });
 }, { once: true });

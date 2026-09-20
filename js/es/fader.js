@@ -35,9 +35,18 @@ function calculateContinuousFaderMovement(el, yPos, clickOffset, store) {
     store.set(el.dataset.param, value);
 }
 
-// Binds a plain continuous fader knob to drag with the mouse, updating
-// `store` on the knob's data-param as it moves.
-export function bindContinuousFader(knobEl, store) {
+// Convenience: binds a continuous fader knob found by data-param inside
+// `container`, sets its initial position, and keeps it in sync with
+// changes made elsewhere (RESET, loading a shared patch, MIDI CC learn).
+export function bindAndSyncFader(container, param, store) {
+    var knob = container.querySelector('[data-param="' + param + '"]');
+
+    bindContinuousFader(knob, store);
+    setupFaderPosition(knob, store.get(param));
+    store.on('change:' + param, function(value) {
+        setupFaderPosition(knob, value);
+    });
+}
     var dragging = false;
     var clickOffset = 0;
 
