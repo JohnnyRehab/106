@@ -1,6 +1,5 @@
 define([
     'backbone',
-    'views/item/dcoItemView',
     'views/layout/choLayout',
     'views/item/disItemView',
     'views/item/drvItemView',
@@ -9,7 +8,7 @@ define([
     'hbs!tmpl/layout/moduleLayout-tmpl'
     ],
     
-    function(Backbone, DCOItemView,
+    function(Backbone,
         CHOLayout, DISItemView, DRVItemView, DLYItemView, RNGItemView, Template) {
         return Backbone.Marionette.LayoutView.extend({
             
@@ -18,7 +17,6 @@ define([
             template: Template,
             
             regions: {
-                dcoRegion: '.js-dco-region',
                 choRegion: '.js-cho-region',
                 disRegion: '.js-dis-region',
                 drvRegion: '.js-drv-region',
@@ -36,7 +34,6 @@ define([
             
             setupModules: function() {
                 return {
-                    dco: new DCOItemView(),
                     cho: new CHOLayout(),
                     dis: new DISItemView(),
                     drv: new DRVItemView(),

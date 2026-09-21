@@ -14,6 +14,7 @@ import { createLfoView } from './es/lfo.js';
 import { createVcaView } from './es/vca.js';
 import { createEnvView } from './es/env.js';
 import { createVcfView } from './es/vcf.js';
+import { createDcoView } from './es/dco.js';
 
 window.addEventListener('juno106:ready', function(e) {
     var store = createStore(e.detail.synth);
@@ -23,7 +24,8 @@ window.addEventListener('juno106:ready', function(e) {
         { selector: '.js-lfo-region', create: createLfoView },
         { selector: '.js-vca-region', create: createVcaView },
         { selector: '.js-env-region', create: createEnvView },
-        { selector: '.js-vcf-region', create: createVcfView }
+        { selector: '.js-vcf-region', create: createVcfView },
+        { selector: '.js-dco-region', create: createDcoView }
     ];
 
     panels.forEach(function(panel) {
